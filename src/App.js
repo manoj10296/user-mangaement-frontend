@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Redirect, Route, Switch } from 'react-router-dom';
+import Login from './components/auth/login';
+import 'semantic-ui-css/semantic.min.css'
+import styled from 'styled-components'
+import Console from './components/Console';
+import Register from './components/auth/signup';
+
+const MainWrap = styled.div`
+  width: 100%;
+  height: 100%;
+`
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <MainWrap>
+        <Switch>
+          <Route path='/login' component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path='/console' component={Console} />
+          <Redirect from="/" to='/login' />
+        </Switch>
+      </MainWrap>
+    </React.Fragment>
   );
 }
 
