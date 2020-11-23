@@ -2,18 +2,8 @@ import React, { useState } from 'react'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
 import { useDispatch, useSelector } from 'react-redux'
 import { Paper, makeStyles, InputBase, IconButton } from '@material-ui/core'
-// import AddIcon from '@material-ui/icons/Add'
-// import DeleteIcon from '@material-ui/icons/Delete'
 import Card from '../Card'
-// import InputCard from './InputCard'
-// import { createNewCard } from '../actions/actionCreators/cardActions'
-// import midString from '../ordering/ordering'
-// import { createNewActivity } from '../actions/actionCreators/activityActions'
-// import AddItem from './AddItem'
-// import {
-//   updateListById,
-//   deleteListById,
-// } from '../actions/actionCreators/listActions'
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,7 +60,6 @@ export default function Column({ column, tasks, index }) {
   const [editable, setEditable] = useState(false)
   const [list, setList] = useState(true)
   const [showDelete, setShowDelete] = useState(false)
-  // const { token, user } = useSelector((state) => state.user)
   const dispatch = useDispatch()
 
   const handleChange = (e) => {
@@ -83,23 +72,6 @@ export default function Column({ column, tasks, index }) {
     const text = cardTitle.trim().replace(/\s+/g, ' ')
     setCardTitle(text)
     const totalTasks = tasks.length
-    // const postCardReq = {
-    //   name: text,
-    //   boardId: column.boardId,
-    //   listId: column._id,
-    //   order:
-    //     totalTasks === 0 ? 'n' : midString(tasks[totalTasks - 1].order, ''),
-    // }
-    // dispatch(createNewCard(postCardReq, token))
-    // dispatch(
-    //   createNewActivity(
-    //     {
-    //       text: `${user.username} added ${text} to ${column.name}`,
-    //       boardId: column.boardId,
-    //     },
-    //     token,
-    //   ),
-    // )
     setCardTitle('')
   }
   const handleAddition = () => {
@@ -127,8 +99,6 @@ export default function Column({ column, tasks, index }) {
       return
     }
     setListTitle(text)
-    // dispatch(updateListById(column._id, { name: listTitle }))
-    // eslint-disable-next-line no-param-reassign
     column.name = text
     setEditable(false)
   }
@@ -165,20 +135,8 @@ export default function Column({ column, tasks, index }) {
                           }}
                           onClick={() => {
                             setList(false)
-                            // dispatch(deleteListById(column._id))
-                            // const text = `${user.username} deleted list ${column.name}`
-                            // dispatch(
-                            //   createNewActivity(
-                            //     { text, boardId: column.boardId },
-                            //     token,
-                            //   ),
-                            // )
                           }}
                         >
-                          {/* <DeleteIcon
-                            fontSize="small"
-                            style={{ backgroundColor: '#EBECF0' }}
-                          /> */}
                         </IconButton>
                       )}
                     </div>
@@ -212,30 +170,8 @@ export default function Column({ column, tasks, index }) {
                           {tasks.map((task, index) => (
                             <Card key={task._id} task={task} index={index} />
                           ))}
-                          {/* {addCardFlag && (
-                            <InputCard
-                              value={cardTitle}
-                              changedHandler={handleChange}
-                              itemAdded={submitHandler}
-                              closeHandler={closeButtonHandler}
-                              keyDownHandler={handleKeyDown}
-                              type="card"
-                              btnText="Add Card"
-                              placeholder="Enter a title for this card..."
-                              width="230px"
-                            />
-                          )} */}
                           {provided.placeholder}
                         </div>
-                        {/* {!addCardFlag && (
-                          <AddItem
-                            handleClick={handleAddition}
-                            // icon={<AddIcon />}
-                            btnText="Add another card"
-                            type="card"
-                            width="256px"
-                          />
-                        )} */}
                       </div>
                     )
                   }

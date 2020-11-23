@@ -3,12 +3,6 @@ import { Draggable } from 'react-beautiful-dnd'
 import { Paper, makeStyles, InputBase, IconButton } from '@material-ui/core'
 
 import { useDispatch, useSelector } from 'react-redux'
-// import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
-// import {
-//   updateCardById,
-//   deleteCardById,
-// } from '../actions/actionCreators/cardActions'
-// import { createNewActivity } from '../actions/actionCreators/activityActions'
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -36,7 +30,6 @@ export default function Card({ task, index }) {
   const [card, setCard] = useState(true)
   const [showDelete, setShowDelete] = useState(false)
   const classes = useStyles()
-  // const { token, user } = useSelector((state) => state.user)
   const dispatch = useDispatch()
   return (
     <Draggable draggableId={task._id} index={index}>
@@ -91,22 +84,7 @@ export default function Card({ task, index }) {
                       <IconButton
                         className={classes.delete}
                         size="small"
-                      // onClick={() => {
-                      //   setCard(false)
-                      //   // dispatch(deleteCardById(task._id))
-                      //   const text = `${user.username} deleted card ${task.name}`
-                      //   // dispatch(
-                      //   //   createNewActivity(
-                      //   //     { text, boardId: task.boardId },
-                      //   //     token,
-                      //   //   ),
-                      //   // )
-                      // }}
                       >
-                        {/* <DeleteForeverIcon
-                          fontSize="small"
-                          style={{ backgroundColor: '#EBECF0' }}
-                        /> */}
                       </IconButton>
                     )}
                   </div>
